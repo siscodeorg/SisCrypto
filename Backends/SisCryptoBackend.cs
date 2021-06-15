@@ -20,6 +20,8 @@ public interface SisCryptoBackend {
 
     public byte[]? AsymmetricVerify(byte[] publicKey, AsymmetricSignResult data);
 
+    public byte[] SecureHash(byte[] data);
+
     public byte[] StringToBytes(string str);
 
     public string? BytesToString(byte[] str);

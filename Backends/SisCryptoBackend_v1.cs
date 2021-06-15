@@ -58,7 +58,8 @@ internal class SisCryptoBackend_v1 : SisCryptoBackend {
     }
 
     public byte[] SecureHash(byte[] data) {
-        throw new NotImplementedException();
+        using var hasher = SHA256.Create();
+        return hasher.ComputeHash(data);
     }
 
     public byte[] StringToBytes(string str) {

@@ -15,11 +15,26 @@ internal class SisCryptoBackend_v1 : SisCryptoBackend {
     }
 
     public SymmetricEncryptResult SymmetricEncrypt(Secret<byte[]> key, byte[] salt, byte[] data) {
-        throw new System.NotImplementedException();
+        Aes encryptor = Aes.Create();
+        encryptor.Key = key.getSecret;
+        encryptor.IV = salt;
+        using var memstream = new MemoryStream();
+        using var cryptstream = new CryptoStream(memstream, encryptor.CreateEncryptor(), CryptoStreamMode.Write);
+        cryptstream.Write(data, 0, data.Length);
+        cryptstream.FlushFinalBlock();
+        byte[] encrypted = memstream.ToArray();
+        return new SymmetricEncryptResult(encrypted, encryptor.IV, Version);
     }
 
     public byte[] SymmetricDecrypt(Secret<byte[]> key, SymmetricEncryptResult data) {
-        throw new System.NotImplementedException();
+        Aes decryptor = Aes.Create();
+        decryptor.Key = key.getSecret;
+        decryptor.IV = data.Salt;
+        using var memstream = new MemoryStream();
+        using var cryptstream = new CryptoStream(memstream, decryptor.CreateDecryptor(), CryptoStreamMode.Write);
+        cryptstream.Write(data.Encrypted, 0, data.Encrypted.Length);
+        cryptstream.FlushFinalBlock();
+        return memstream.ToArray();
     }
 
     public KeypairResult GenerateKeypair(byte[] source) {

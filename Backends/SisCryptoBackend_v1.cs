@@ -1,11 +1,14 @@
-﻿namespace SisCrypto.Backends {
+﻿using System.Security.Cryptography;
+
+namespace SisCrypto.Backends {
 internal class SisCryptoBackend_v1 : SisCryptoBackend {
     public static readonly SisCryptoBackend_v1 INSTANCE = new();
 
     public int Version => 1;
 
     public DerivedKeyResult DeriveKey(Secret<byte[]> passcode, byte[] salt) {
-        throw new System.NotImplementedException();
+        using var pbkdf2 = new Rfc2898DeriveBytes(passcode.getSecret, salt, 25000);
+        return new DerivedKeyResult(new Secret<byte[]>(pbkdf2.GetBytes(32)), salt, Version);
     }
 
     public SymmetricEncryptResult SymmetricEncrypt(Secret<byte[]> key, byte[] salt, byte[] data) {

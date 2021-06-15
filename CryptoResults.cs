@@ -16,6 +16,14 @@ public record Secret<T>(T getSecret);
 public record SymmetricEncryptResult(byte[] Encrypted, byte[] Salt, int Version);
 
 /**
+ * Holds the results of encrypting data with a password. This is simply a common combination of
+ * Key Derivation and Symmetric Encryption. In order to decrypt the data, you must possess the
+ * password that was originally used to encrypt it. This password should be kept secret, but
+ * the data in PasswordEncryptedResult can safely be made public.
+ */
+public record PasswordEncryptResult(byte[] Data, byte[] KeySalt, byte[] EncryptSalt, int Version);
+
+/**
  * Holds the results of encrypting data with an asymmetric algorithm such as RSA. This data is encrypted
  * so that only a person who holds the private key that matches the public key originally used to
  * create it can decrypt and read it. Never share the private key that can read it, but this data itself

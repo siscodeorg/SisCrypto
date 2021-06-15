@@ -2,8 +2,6 @@
 public static partial class SisCrypto {
     public const int SISCRYPTO_LATEST_VERSION = 1;
 
-    public record PasswordEncryptResult(byte[] Data, byte[] KdfSalt, byte[] EncryptSalt, int Version);
-
     public static PasswordEncryptResult PasswordEncrypt(
         Secret<string> password, string data,
         int version = SISCRYPTO_LATEST_VERSION
@@ -19,7 +17,7 @@ public static partial class SisCrypto {
     }
 
     public static string PasswordDecrypt(Secret<string> password, PasswordEncryptResult data) {
-        var keyResult = DeriveKey(password, data.KdfSalt, data.Version);
+        var keyResult = DeriveKey(password, data.KeySalt, data.Version);
         var decryptResult = SymmetricDecrypt(
             keyResult.Key,
             new SymmetricEncryptResult(data.Data, data.EncryptSalt, data.Version)

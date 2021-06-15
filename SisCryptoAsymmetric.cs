@@ -16,5 +16,8 @@ public static partial class SisCrypto {
 
     public static byte[] AsymmetricDecrypt(Secret<byte[]> privateKey, AsymmetricEncryptResult data, int version = SISCRYPTO_LATEST_VERSION)
         => SisCryptoBackend.GetVersion(version).AsymmetricDecrypt(privateKey, data);
+
+    public static byte[]? AsymmetricVerify(byte[] publicKey, AsymmetricSignResult data, int version = SISCRYPTO_LATEST_VERSION)
+        => SisCryptoBackend.GetVersion(version).AsymmetricVerify(publicKey, data);
 }
 }

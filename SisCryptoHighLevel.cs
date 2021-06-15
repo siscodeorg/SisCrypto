@@ -1,6 +1,6 @@
 ﻿namespace SisCrypto {
 public static partial class SisCrypto {
-    public const int SISCRYPTO_LATEST_VERSION = -1;
+    public const int SISCRYPTO_LATEST_VERSION = 1;
 
     public static SymmetricEncryptResult SymmetricEncryptWithPassword(
         Secret<string> password, string data,

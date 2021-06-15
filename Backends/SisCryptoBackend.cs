@@ -25,9 +25,12 @@ public interface SisCryptoBackend {
     public string? BytesToString(byte[] str);
 
     public static SisCryptoBackend GetVersion(int version) {
-        throw new NotSupportedException(
-            $"SisCrypto backend version ${version} does not exist. Are you out of date?"
-        );
+        return version switch {
+            1 => SisCryptoBackend_v1.INSTANCE,
+            _ => throw new NotSupportedException(
+                $"SisCrypto backend version ${version} does not exist. Are you out of date?"
+            )
+        };
     }
 }
 }

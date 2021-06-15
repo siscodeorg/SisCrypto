@@ -1,4 +1,7 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SisCrypto.Backends {
 internal class SisCryptoBackend_v1 : SisCryptoBackend {
@@ -40,11 +43,11 @@ internal class SisCryptoBackend_v1 : SisCryptoBackend {
     }
 
     public byte[] StringToBytes(string str) {
-        throw new System.NotImplementedException();
+        return Encoding.UTF8.GetBytes(str);
     }
 
-    public string? BytesToString(byte[] str) {
-        throw new System.NotImplementedException();
+    public string? BytesToString(byte[] bytes) {
+        return Encoding.UTF8.GetString(bytes);
     }
 }
 }

@@ -2,19 +2,28 @@
 public static partial class SisCrypto {
     public const int SISCRYPTO_LATEST_VERSION = -1;
 
-    public static SymmetricEncryptResult SymmetricEncryptWithPassword(
+    public record PasswordEncryptResult(byte[] Data, byte[] KdfSalt, byte[] EncryptSalt, int Version);
+
+    public static PasswordEncryptResult PasswordEncrypt(
         Secret<string> password, string data,
         int version = SISCRYPTO_LATEST_VERSION
     ) {
-        var salt = SisCryptoRandom.GetSecureBytes(16);
-        var keyResult = DeriveKey(password, salt, version);
-        var encryptResult = SymmetricEncrypt(keyResult.Key, salt, data, version);
-        return encryptResult;
+        var keyResult = DeriveKey(password, version);
+        var encryptResult = SymmetricEncrypt(keyResult.Key, data, version);
+        return new PasswordEncryptResult(
+            encryptResult.Encrypted,
+            keyResult.Salt,
+            encryptResult.Salt,
+            version
+        );
     }
 
-    public static string SymmetricDecryptWithPassword(Secret<string> password, SymmetricEncryptResult data) {
-        var keyResult = DeriveKey(password, data.Salt, data.Version);
-        var decryptResult = SymmetricDecrypt(keyResult.Key, data);
+    public static string PasswordDecrypt(Secret<string> password, PasswordEncryptResult data) {
+        var keyResult = DeriveKey(password, data.KdfSalt, data.Version);
+        var decryptResult = SymmetricDecrypt(
+            keyResult.Key,
+            new SymmetricEncryptResult(data.Data, data.EncryptSalt, data.Version)
+        );
         return BytesToString(decryptResult, data.Version)!;
     }
 }

@@ -4,4 +4,16 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="SisCrypto.Test\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="SisCrypto.Test\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="SisCrypto.Test\**" />
+    </ItemGroup>
+
 </Project>

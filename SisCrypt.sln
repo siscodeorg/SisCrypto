@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisCrypto", "SisCrypto.csproj", "{DDA7DA8A-19FD-4F8A-B1BA-5D259DF820A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisCrypt", "SisCrypt.csproj", "{DDA7DA8A-19FD-4F8A-B1BA-5D259DF820A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisCrypto.Test", "SisCrypto.Test\SisCrypto.Test.csproj", "{9A6DFF5B-A498-4293-81A3-A429EBE5A056}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisCrypt.Test", "SisCrypt.Test\SisCrypt.Test.csproj", "{9A6DFF5B-A498-4293-81A3-A429EBE5A056}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

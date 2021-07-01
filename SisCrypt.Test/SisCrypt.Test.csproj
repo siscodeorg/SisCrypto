@@ -3,10 +3,11 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>SisCrypto.Test</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SisCrypto.csproj" />
+      <ProjectReference Include="..\SisCrypt.csproj" />
     </ItemGroup>
 
 </Project>

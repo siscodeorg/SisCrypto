@@ -3,9 +3,9 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace SisCrypto.Backends {
-internal class SisCryptoBackend_v1 : SisCryptoBackend {
-    public static readonly SisCryptoBackend_v1 INSTANCE = new();
+namespace SisCrypt.Backends {
+internal class SisCryptBackendV1 : SisCryptBackend {
+    public static readonly SisCryptBackendV1 INSTANCE = new();
 
     public int Version => 1;
 

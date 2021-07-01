@@ -1,10 +1,10 @@
-﻿namespace SisCrypto {
-public static partial class SisCrypto {
-    public const int SISCRYPTO_LATEST_VERSION = 1;
+﻿namespace SisCrypt {
+public static partial class SisCrypt {
+    public const int SISCRYPT_LATEST_VERSION = 1;
 
     public static PasswordEncryptResult PasswordEncrypt(
         Secret<string> password, string data,
-        int version = SISCRYPTO_LATEST_VERSION
+        int version = SISCRYPT_LATEST_VERSION
     ) {
         var keyResult = DeriveKey(password, version);
         var encryptResult = SymmetricEncrypt(keyResult.Key, data, version);

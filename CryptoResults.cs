@@ -1,4 +1,4 @@
-﻿namespace SisCrypto {
+﻿namespace SisCrypt {
 /**
  * A marker class to indicate that this value is a secret and should be stored securely.
  *

@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace SisCrypto {
+namespace SisCrypt {
 public static class SisCryptoRandom {
     public static byte[] GetSecureBytes(int len) {
         byte[] bytes = new byte[len];

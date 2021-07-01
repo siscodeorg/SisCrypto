@@ -7,14 +7,17 @@
 
     <ItemGroup>
       <Compile Remove="SisCrypto.Test\**" />
+      <Compile Remove="SisCrypt.Test\**" />
     </ItemGroup>
 
     <ItemGroup>
       <EmbeddedResource Remove="SisCrypto.Test\**" />
+      <EmbeddedResource Remove="SisCrypt.Test\**" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="SisCrypto.Test\**" />
+      <None Remove="SisCrypt.Test\**" />
     </ItemGroup>
 
 </Project>

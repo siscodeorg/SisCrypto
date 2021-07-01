@@ -1,7 +1,7 @@
 ﻿using System;
 
-namespace SisCrypto.Backends {
-public interface SisCryptoBackend {
+namespace SisCrypt.Backends {
+public interface SisCryptBackend {
     public int Version { get; }
 
     public DerivedKeyResult DeriveKey(Secret<byte[]> passcode, byte[] salt);
@@ -26,11 +26,11 @@ public interface SisCryptoBackend {
 
     public string? BytesToString(byte[] str);
 
-    public static SisCryptoBackend GetVersion(int version) {
+    public static SisCryptBackend GetVersion(int version) {
         return version switch {
-            1 => SisCryptoBackend_v1.INSTANCE,
+            1 => SisCryptBackendV1.INSTANCE,
             _ => throw new NotSupportedException(
-                $"SisCrypto backend version ${version} does not exist. Are you out of date?"
+                $"SisCrypt backend version ${version} does not exist. Are you out of date?"
             )
         };
     }
